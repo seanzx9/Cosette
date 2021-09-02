@@ -2,7 +2,6 @@
 	BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
-		padding: 0, 5, 0, 0
 		canvas.before:
             Color:
                 rgba: 1, 1, 1, 1
@@ -10,15 +9,18 @@
                 pos: self.pos
                 size: self.size
 
-		Label:
-			id: output_field
-			pos: (0, 0)
-			test: "hi"
-			size_hint: (1, 1)
-			font_size: 20
-			color: 0.1, 0.1, 0.1, 1
-			font_name: "Roboto-Regular"
-			text_size: self.size
+        ScrollView:
+            Label:
+                id: output_field
+                pos: (0, 0)
+                text: "Hi, I'm Cosette. What would you like?"
+                size_hint_y: None
+                height: self.texture_size[1]
+                font_size: 18
+                color: 0.1, 0.1, 0.1, 1
+                font_name: "Roboto-Regular"
+                text_size: self.width, None
+                padding: 5, 10
 
 		TextInput:
 			id: input_field
