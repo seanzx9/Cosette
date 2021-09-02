@@ -26,7 +26,7 @@ def process(text):
     elif search(text, HELP_KEYWORDS):
         return commands()
     #show all wifi networks
-    elif search(text, ["past networks"]):
+    elif search(text, ["past networks", "network history"]):
         return all_wifi_networks()
     #error statement
     else:
@@ -40,7 +40,27 @@ def search(key, list_):
 
 #returns possible actions
 def commands():
-    return '''1.) Past networks - shows all past connected networks'''
+    res = "-------------------------------------------------------------------------------------\n" \
+          "- key words (include one in your query)\n\n" \
+          "- functionality (what I do)\n" \
+          "-------------------------------------------------------------------------------------\n\n"
+    res += newCommand("exit, q, quit, goodbye, bye",
+                      "Exits Cosette.")
+    res += newCommand("help, what can you do, commands",
+                      "Shows list of all functions.")
+    res += newCommand("past networks, network history",
+                      "Shows all networks connected to in the past\n  and copies them to your clipboard")
+
+    return res
+
+
+#returns formatted new command definition as string
+def newCommand(key_words, functionality):
+    definition = "-------------------------------------------------------------------------------------\n"
+    definition += "- " + key_words + "\n\n"
+    definition += "- " + functionality + "\n"
+    definition += "-------------------------------------------------------------------------------------\n\n"
+    return definition
 
 
 #returns all wifi networks in history
