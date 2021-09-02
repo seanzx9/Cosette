@@ -3,7 +3,7 @@ from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.animation import Animation
-import cosette as c
+import cosette
 
 #set window size
 Window.size = (500, 500)
@@ -15,10 +15,10 @@ Builder.load_file("layout.kv")
 class MyLayout(Widget):
     def process_input(self):
         #text input variable
-        text = self.ids.input_field.text
+        query = self.ids.input_field.text
 
         #process input and set output field to result
-        self.ids.output_field.text = c.process(text)
+        self.ids.output_field.text = cosette.process(query)
 
         #exit program on command
         if self.ids.output_field.text == "Bye bye":
