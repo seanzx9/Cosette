@@ -8,25 +8,25 @@ HELP_KEYWORDS = ["help", "what can you do", "commands"]
 
 
 #processes input text and returns output as string
-def process(text):
+def process(query):
     #prepare text input
-    text = text.lower().strip()
+    query = query.lower().strip()
 
     #empty input
-    if text == "":
+    if query == "":
         return ""
     #exit condition
-    elif search(text, EXIT_KEYWORDS):
+    elif search(query, EXIT_KEYWORDS):
         return "Bye bye"
     #hello condition
-    elif search(text, HELLO_KEYWORDS):
+    elif search(query, HELLO_KEYWORDS):
         return random.choice(["Hello, what can I do for you today?",
                               "Hi, how can I help?"])
     #show commands condition
-    elif search(text, HELP_KEYWORDS):
+    elif search(query, HELP_KEYWORDS):
         return commands()
     #show all wifi networks
-    elif search(text, ["past networks", "network history"]):
+    elif search(query, ["past networks", "network history"]):
         return all_wifi_networks()
     #error statement
     else:
