@@ -162,5 +162,8 @@ def get_wifi_password(query):
 
 #returns wifi password of current wifi if connected
 def get_current_wifi_password():
-    current_profile = get_current_network().split(" ")[5]
-    return get_wifi_password(current_profile)
+    current_profile = get_current_network().split(" ")
+    if len(current_profile) >= 5:
+        return get_wifi_password(current_profile[5])
+    else:
+        return "Wifi not found :("
